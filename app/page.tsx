@@ -1,4 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
+import Input from "./Input";
 
 export type Props = {
   params: { lang: string; segments: string[] };
@@ -8,17 +9,17 @@ export type Props = {
 export default function Home(props: Props) {
   const { params } = props;
   const searchParams = new URLSearchParams(props.searchParams); // make it an URLSearchParams instance (because of (I))
-
   const id = searchParams.get("id");
 
   return (
-    <form>
-      <label>
-        App id
-        <input type="text" name="id" defaultValue={id ?? ""} />
-      </label>
-      <button>generate smart banner</button>
-    </form>
+    <>
+      <form>
+        <label>
+          <Input id={id} />
+        </label>
+        <button>smart banner</button>
+      </form>
+    </>
   );
 }
 
